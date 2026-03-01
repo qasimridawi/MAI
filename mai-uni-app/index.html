@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAI Space</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        /* MAI Blue Theme */
+        :root {
+            --mai-blue: #0033A0; /* Adjust to exact MAI brand color */
+            --bg-color: #0d1117; /* Dark background */
+            --card-bg: #161b22;
+            --text-main: #ffffff;
+            --free-green: #2ea043;
+            --busy-red: #da3633;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .header {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--mai-blue);
+            margin-bottom: 20px;
+        }
+
+        .room-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 5px solid var(--free-green); /* Green edge for free */
+        }
+
+        .room-card.busy {
+            border-left-color: var(--busy-red);
+        }
+
+        .btn {
+            background-color: var(--mai-blue);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        Найти сейчас (Find Now)
+    </div>
+
+    <div class="room-card">
+        <h3>Аудитория 401</h3>
+        <p>Свободно до 14:00</p>
+    </div>
+
+    <div class="room-card busy">
+        <h3>Аудитория 405</h3>
+        <p>Занято (Идет пара)</p>
+    </div>
+
+    <button class="btn" onclick="tg.close()">Закрыть (Close)</button>
+
+    <script>
+        // Initialize the Telegram Web App object
+        const tg = window.Telegram.WebApp;
+
+        // Tell Telegram the app is ready to be displayed
+        tg.ready();
+
+        // Expand the mini app to full height
+        tg.expand(); 
+
+        // You can grab the user's Telegram name!
+        console.log("Hello, " + tg.initDataUnsafe.user.first_name);
+    </script>
+</body>
+</html>
